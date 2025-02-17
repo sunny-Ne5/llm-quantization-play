@@ -1,6 +1,7 @@
+
 ---
 
-# **LLM Quantization Toolkit 🧠⚡**  
+# **LLM Quantization Playground 🧠⚡**  
 *A lightweight and efficient quantization framework for GPT-2 and other transformer models*  
 
 ![LLM Quantization](https://img.shields.io/badge/LLM-Quantization-blue) ![Python](https://img.shields.io/badge/Python-3.8%2B-yellow) ![PyTorch](https://img.shields.io/badge/PyTorch-Compatible-red)
@@ -10,7 +11,7 @@
 ## **🚀 Overview**
 Large Language Models (LLMs) like GPT-2 require significant computational resources. This project provides a **CLI-based quantization framework** that allows users to **run GPT-2 models with 4-bit, 8-bit, and 16-bit quantization strategies** to reduce memory footprint and improve inference speed.  
 
-This toolkit offers:  
+### **Key Features**  
 ✅ **Multiple Quantization Strategies** (4-bit, 8-bit, 16-bit)  
 ✅ **Real-time Performance Metrics** (latency, memory usage)  
 ✅ **Model Management & Inference Optimization**  
@@ -24,20 +25,21 @@ This toolkit offers:
 llm_quantization/
 │── README.md                # Documentation
 │── main.py                  # CLI Wrapper for running the quantized model
-│── inference_optimizer.py    # Optimizes batch inference
-│── metrics_tracker.py        # Tracks latency & memory usage
-│── model.py                  # GPT-2 model wrapper with quantization
-│── model_manager.py          # Manages model lifecycle & inference
+│── inference_optimizer.py   # Optimizes batch inference
+│── metrics_tracker.py       # Tracks latency & memory usage
+│── model.py                 # GPT-2 model wrapper with quantization
+│── model_manager.py         # Manages model lifecycle & inference
 │── quantization/
 │   │── __init__.py
 │   │── quantization_engine.py  # Core quantization logic
 │   │── quantization_strategy.py # 4-bit, 8-bit, 16-bit strategies
-│── env/ (optional)           # Virtual environment
+│── env/ (optional)          # Virtual environment
 ```
 
 ---
 
 ## **📜 Low-Level Design (LLD)**
+
 ### **1️⃣ Model Quantization Workflow**
 ```plaintext
 User Input -> CLI -> ModelManager -> QuantizationEngine -> Model -> Inference -> MetricsTracker
@@ -65,35 +67,36 @@ User Input -> CLI -> ModelManager -> QuantizationEngine -> Model -> Inference ->
            |
            v
 +--------------------------+
-|     ModelManager        |
+|     ModelManager         |
 |--------------------------|
-| - model: Model          |
-| - quantization_engine   |
-| + apply_quantization()  |
-| + infer()               |
+| - model: Model           |
+| - quantization_engine    |
+| + apply_quantization()   |
+| + infer()                |
 +--------------------------+
            |
            v
 +--------------------------+
 |  QuantizationEngine      |
 |--------------------------|
-| - model: Model          |
+| - model: Model           |
 | - qStrategy: BaseQuantizationStrategy |
-| + quantize()            |
+| + quantize()             |
 +--------------------------+
            |
            v
 +--------------------------+
 | QuantizationStrategy     |
 |--------------------------|
-| + quantize()            |
-| + dequantize()          |
+| + quantize()             |
+| + dequantize()           |
 +--------------------------+
 ```
 
 ---
 
 ## **🛠️ Technical Details**
+
 ### **1️⃣ Quantization Strategies**
 - **4-bit Quantization**: Reduces precision aggressively for maximum compression.  
 - **8-bit Quantization**: Balanced trade-off between speed and accuracy.  
@@ -111,6 +114,7 @@ $$ Q = \text{round}(\text{tensor} \times \text{scale} + \text{zero point}) $$
 ---
 
 ## **🚀 Installation**
+
 ### **1️⃣ Clone the Repository**
 ```sh
 git clone https://github.com/sunny-ne5/llm-quantization.git
@@ -132,6 +136,7 @@ pip install -r requirements.txt
 ---
 
 ## **📝 Usage**
+
 ### **1️⃣ Run the CLI**
 ```sh
 python -m llm_quantization.main <model_name> <quantization_type>
@@ -158,23 +163,22 @@ exit
 
 ## **📊 Performance Metrics**
 | **Quantization** | **Model Size Reduction** | **Inference Speed** |
-|-----------------|-------------------------|--------------------|
-| **4-bit**       | 🔥 85% smaller           | ⚡ Super fast      |
-| **8-bit**       | 🚀 50% smaller           | 🏎️ Faster         |
-| **16-bit**      | 🎯 25% smaller           | ⚖️ Balanced       |
+|------------------|--------------------------|---------------------|
+| **4-bit**        | 🔥 85% smaller           | ⚡ Super fast       |
+| **8-bit**        | 🚀 50% smaller           | 🏎️ Faster          |
+| **16-bit**       | 🎯 25% smaller           | ⚖️ Balanced        |
 
 ---
 
 ## **📌 Future Enhancements**
-✅ Add support for more LLMs (Llama, Falcon, etc.)  
-✅ Improve multi-threaded quantization for large models  
-✅ Implement TensorRT and ONNX optimizations  
+- Add support for more LLMs (Llama, Falcon, etc.)  
+- Improve multi-threaded quantization for large models  
+- Implement TensorRT and ONNX optimizations  
 
 ---
 
 ## **🤝 Contributing**
 Pull requests are welcome! Feel free to open an issue for any bugs, feature requests, or discussions.
-
 
 ---
 
