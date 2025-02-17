@@ -1,0 +1,7 @@
+bindings.cpp
+setup.py
+quantize_core.egg-info/PKG-INFO
+quantize_core.egg-info/SOURCES.txt
+quantize_core.egg-info/dependency_links.txt
+quantize_core.egg-info/requires.txt
+quantize_core.egg-info/top_level.txt
