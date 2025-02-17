@@ -1,5 +1,6 @@
 from typing import List
 
+
 class InferenceOptimizer:
     def __init__(self, model_manager):
         """Initialize the InferenceOptimizer.
@@ -9,7 +10,9 @@ class InferenceOptimizer:
         """
         self.model_manager = model_manager
 
-    def optimize_inference(self, input_texts: List[str], max_length: int = 50) -> List[str]:
+    def optimize_inference(
+        self, input_texts: List[str], max_length: int = 50
+    ) -> List[str]:
         """Optimize inference using batching.
 
         Args:

@@ -3,6 +3,7 @@ import pynvml
 from typing import Dict
 import time
 
+
 class MetricsTracker:
     def __init__(self, model_manager):
         """Initialize the MetricsTracker.
@@ -62,7 +63,9 @@ class MetricsTracker:
             }
         return gpu_utilization
 
-    def track_inference(self, input_text: str, max_length: int = 50) -> Dict[str, float]:
+    def track_inference(
+        self, input_text: str, max_length: int = 50
+    ) -> Dict[str, float]:
         """Track GPU memory usage, utilization, and latency during inference.
 
         Args:
@@ -90,7 +93,8 @@ class MetricsTracker:
         memory_used_mb = {}
         for gpu_id in gpu_memory_before:
             memory_used_mb[gpu_id] = (
-                gpu_memory_after[gpu_id]["used_memory_mb"] - gpu_memory_before[gpu_id]["used_memory_mb"]
+                gpu_memory_after[gpu_id]["used_memory_mb"]
+                - gpu_memory_before[gpu_id]["used_memory_mb"]
             )
 
         # Shutdown NVML

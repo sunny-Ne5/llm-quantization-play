@@ -1,5 +1,6 @@
 from .quantization.quantization_engine import QuantizationEngine
 
+
 class ModelManager:
     def __init__(self, model):
         """Initialize the ModelManager.

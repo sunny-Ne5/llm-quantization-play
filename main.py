@@ -1,14 +1,26 @@
 import argparse
 from llm_quantization import Model, ModelManager, MetricsTracker
 
+
 def main():
 
-    parser = argparse.ArgumentParser(description="Run a GPT-2 model with optional quantization in a REPL.")
-    parser.add_argument("model_name", type=str, help="Name of the GPT-2 model (e.g., gpt2)")
-    parser.add_argument("quantization", type=str, choices=["none", "8bit", "4bit", "16bit"], help="Quantization type")
+    parser = argparse.ArgumentParser(
+        description="Run a GPT-2 model with optional quantization in a REPL."
+    )
+    parser.add_argument(
+        "model_name", type=str, help="Name of the GPT-2 model (e.g., gpt2)"
+    )
+    parser.add_argument(
+        "quantization",
+        type=str,
+        choices=["none", "8bit", "4bit", "16bit"],
+        help="Quantization type",
+    )
     args = parser.parse_args()
 
-    model = Model(args.model_name, args.quantization if args.quantization != "none" else None)
+    model = Model(
+        args.model_name, args.quantization if args.quantization != "none" else None
+    )
     model_manager = ModelManager(model)
     model_manager.apply_quantization(model.quantization_strategy)
     metrics_tracker = MetricsTracker(model_manager)
@@ -27,6 +39,7 @@ def main():
         except KeyboardInterrupt:
             break
     print("Exiting REPL.")
+
 
 if __name__ == "__main__":
     main()
